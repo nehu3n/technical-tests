@@ -153,7 +153,7 @@ func calculationEngine(payrollType string, firstJobDate time.Time, gender string
 		return 0, 0, 0, errors.New("invalid gender") // ...returns 0 in the amounts and an error.
 	}
 
-	// Si el tipo de nomina es invalido (ni A, ni B, ni C y ni D)...
+	// If the payroll type is invalid (neither A, nor B, nor C, nor D)...
 	if payrollType != "A" && payrollType != "B" && payrollType != "C" && payrollType != "D" {
 		return 0, 0, 0, errors.New("invalid payroll type") // ...returns 0 in the amounts and an error.
 	}
