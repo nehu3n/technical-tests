@@ -211,7 +211,7 @@ func main() {
 	fmt.Printf("Maximum Amount: %d\n", maxAmount)
 	fmt.Printf("Optimal Line: %d\n\n", optimalLineRecommendation)
 
-/*
+    /*
 	Not necessary!
 	
 	End of time to calculate the execution speed and print it in milliseconds.

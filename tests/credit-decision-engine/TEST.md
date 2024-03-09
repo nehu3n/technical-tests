@@ -53,7 +53,7 @@ Where:
 
 ## Presentation of Results
 
-The problem must be solved in JavaScript, and a file named `motor.js` must be delivered, where a function `calculoMotor` is defined. This function should take the following input parameters: `tipoNomina` (string), `fechaPrimerEmpleo` (Date), and `genero` (string). The output of the function should be an object containing the attributes: `montoMinimo`, `montoMaximo`, and `recomendacionLinea`, which should contain the minimum and maximum loan amounts and the optimal line of credit recommendation, respectively.
+The problem must be solved in Golang, and a file named `solution.go` must be delivered, where a function `calculationEngine` is defined. This function should take the following input parameters: `typePayroll` (string), `dateFirstEmployment` (Date), and `gender` (string). The output of the function should be an object containing the attributes: `amountMinimum`, `amountMaximum`, and `recommendationLine`, which should contain the minimum and maximum loan amounts and the optimal line of credit recommendation, respectively.
 
 Additionally, the results of evaluating the function using the following data set must be provided. **The delivery format is free.
 
