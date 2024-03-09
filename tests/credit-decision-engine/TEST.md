@@ -4,28 +4,28 @@ For a financial company, it is desired to know the appropriate set of loans for 
 
 Minimum loan amount based on payroll type and number of months since the first job for male gender.
 
-| Months since first job | A | B | C | D |
-|------------------------|---|---|---|---|
-| [0-26)                 | 100 | 1000 | 400 | 400 |
-| 27                     | 400 | 600 | 200 | 300 |
-| 28                     | 900 | 1000 | 200 | 500 |
-| 29                     | 100 | 1000 | 1000 | 900 |
-| [30 - inf]             | 600 | 1000 | 600 | 1000 |
+| Months since first job | A   | B    | C    | D    |
+| ---------------------- | --- | ---- | ---- | ---- |
+| [0-26)                 | 100 | 1000 | 400  | 400  |
+| 27                     | 400 | 600  | 200  | 300  |
+| 28                     | 900 | 1000 | 200  | 500  |
+| 29                     | 100 | 1000 | 1000 | 900  |
+| [30 - inf]             | 600 | 1000 | 600  | 1000 |
 
 Minimum loan amount based on payroll type and number of months since the first job for female gender.
 
-| Months since first job | A | B | C | D |
-|------------------------|---|---|---|---|
-| [0-24)                 | 800 | 800 | 200 | 500 |
+| Months since first job | A   | B   | C   | D    |
+| ---------------------- | --- | --- | --- | ---- |
+| [0-24)                 | 800 | 800 | 200 | 500  |
 | 25                     | 800 | 700 | 900 | 1000 |
-| 26                     | 800 | 100 | 700 | 600 |
-| 27                     | 600 | 600 | 800 | 400 |
-| [28 - inf]             | 200 | 700 | 100 | 700 |
+| 26                     | 800 | 100 | 700 | 600  |
+| 27                     | 600 | 600 | 800 | 400  |
+| [28 - inf]             | 200 | 700 | 100 | 700  |
 
 Maximum loan amount based on payroll type and number of months since the first job for male gender.
 
-| Months since first job | A | B | C | D |
-|------------------------|---|---|---|---|
+| Months since first job | A    | B    | C    | D    |
+| ---------------------- | ---- | ---- | ---- | ---- |
 | [0-26)                 | 4900 | 4700 | 5000 | 4400 |
 | 27                     | 4700 | 4400 | 4700 | 4700 |
 | 28                     | 4600 | 5000 | 5000 | 4300 |
@@ -34,8 +34,8 @@ Maximum loan amount based on payroll type and number of months since the first j
 
 Maximum loan amount based on payroll type and number of months since the first job for female gender.
 
-| Months since first job | A | B | C | D |
-|------------------------|---|---|---|---|
+| Months since first job | A    | B    | C    | D    |
+| ---------------------- | ---- | ---- | ---- | ---- |
 | [0-24)                 | 4000 | 4700 | 4600 | 5000 |
 | 25                     | 4200 | 4200 | 4900 | 4900 |
 | 26                     | 4100 | 4500 | 4600 | 4700 |
@@ -53,13 +53,13 @@ Where:
 
 ## Presentation of Results
 
-The problem must be solved in Golang, and a file named `solution.go` must be delivered, where a function `calculationEngine` is defined. This function should take the following input parameters: `typePayroll` (string), `dateFirstEmployment` (Date), and `gender` (string). The output of the function should be an object containing the attributes: `amountMinimum`, `amountMaximum`, and `recommendationLine`, which should contain the minimum and maximum loan amounts and the optimal line of credit recommendation, respectively.
+The problem must be solved in some programming language, and a file named `solution.ext` must be delivered, where a `calculationEngine` function is defined. This function must take the following input parameters: `typePayroll` (string), `firstJobDate` (Date), and `gender` (string). The output of the function must be an object containing the attributes: `amountMinimum`, `amountMaximum`, and `recommendationLine`, which must contain the minimum and maximum loan amounts and the optimal recommendation of the credit line, respectively.
 
-Additionally, the results of evaluating the function using the following data set must be provided. **The delivery format is free.
+Additionally, the results of evaluating the function using the following data set must be provided. \*\*The delivery format is free.
 
 | Payroll Type | First Job Date | Gender | Minimum Loan Amount | Maximum Loan Amount | Optimal Credit Line |
-|--------------|-----------------|--------|----------------------|----------------------|----------------------|
-| A            | 12/06/2022      | f      |                     |                     |                      |
-| B            | 30/12/1993      | f      |                     |                     |                      |
-| C            | 19/09/2020      | m      |                     |                     |                      |
-| D            | 15/01/2019      | m      |                     |                     |                      |
+| ------------ | -------------- | ------ | ------------------- | ------------------- | ------------------- |
+| A            | 12/06/2022     | f      |                     |                     |                     |
+| B            | 30/12/1993     | f      |                     |                     |                     |
+| C            | 19/09/2020     | m      |                     |                     |                     |
+| D            | 15/01/2019     | m      |                     |                     |                     |

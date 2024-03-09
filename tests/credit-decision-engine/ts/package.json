@@ -1,0 +1,13 @@
+{
+  "name": "credit-decision-engine",
+  "description": "TypeScript version for CreditDecisionEngine test.",
+  "main": "solution.ts",
+  "scripts": {
+    "start": "ts-node solution.ts"
+  },
+  "author": "Nehuén | Neth",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  }
+}

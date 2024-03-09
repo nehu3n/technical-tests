@@ -15,9 +15,10 @@ import (
 Defines a type for dictionaries.
 
 @type
- map[string]:
-  map[int]:
-   int
+
+	map[string]:
+	 map[int]:
+	  int
 */
 type Amount map[string]map[int]int
 
@@ -54,9 +55,6 @@ var (
 		"C": {0: 4600, 24: 4600, 25: 4900, 26: 4600, 27: 4700, 28: 4000},
 		"D": {0: 5000, 24: 5000, 25: 4900, 26: 4700, 27: 5000, 28: 4300},
 	}
-
-	// Extra variable outside dictionaries. Defines the working time.
-	workingTime int
 )
 
 /*
@@ -100,15 +98,15 @@ Function that calculates the time elapsed since the first job.
 @return int8: working time in months
 */
 func calculateWorkingTime(firstJobDate time.Time) int {
-    years := time.Now().Year() - firstJobDate.Year()
-    months := int(time.Now().Month()) - int(firstJobDate.Month())
+	years := time.Now().Year() - firstJobDate.Year()
+	months := int(time.Now().Month()) - int(firstJobDate.Month())
 
-    if months < 0 {
-        years--
-        months += 12
-    }
+	if months < 0 {
+		years--
+		months += 12
+	}
 
-    return years*12 + months
+	return years*12 + months
 }
 
 /*
@@ -121,18 +119,18 @@ Function that calculates the optimal recommendation line
 */
 func calculateOptimalLine(minAmount int, maxAmount int) int {
 	/*
-	p1 = minimum amount + √(maximum amount - minimum amount)
+		p1 = minimum amount + √(maximum amount - minimum amount)
 	*/
-    p1 := float64(minAmount) + math.Sqrt(float64(maxAmount)-float64(minAmount))
+	p1 := float64(minAmount) + math.Sqrt(float64(maxAmount)-float64(minAmount))
 	/*
-	p2 = minimum amount + 0.0175 * (maximum amount - minimum amount)
+		p2 = minimum amount + 0.0175 * (maximum amount - minimum amount)
 	*/
-    p2 := float64(minAmount) + 0.0175*(float64(maxAmount)-float64(minAmount))
+	p2 := float64(minAmount) + 0.0175*(float64(maxAmount)-float64(minAmount))
 
 	/*
-    optimal credit line = max(p1, p2)
+	   optimal credit line = max(p1, p2)
 	*/
-    return int(math.Max(p1, p2))
+	return int(math.Max(p1, p2))
 }
 
 /*
@@ -158,9 +156,10 @@ func calculationEngine(payrollType string, firstJobDate time.Time, gender string
 		return 0, 0, 0, errors.New("invalid payroll type") // ...returns 0 in the amounts and an error.
 	}
 
+	var workingTime int
+
 	// Calculates and adapts the working time with the defined functions.
-	workingTime = calculateWorkingTime(firstJobDate)
-	workingTime, err := fixWorkingTime(workingTime, gender)
+	workingTime, err := fixWorkingTime(calculateWorkingTime(firstJobDate), gender)
 
 	// If there is an error, it returns it next to 0 in the amounts.
 	if err != nil {
@@ -174,7 +173,7 @@ func calculationEngine(payrollType string, firstJobDate time.Time, gender string
 		maxAmount = maxAmountMale[payrollType][workingTime] // ...we take the maximum amount based on your work time and payroll type.
 	} else { // If the gender is female...
 		minAmount = minAmountFemale[payrollType][workingTime] // ...we take the minimum amount based on your work time and payroll type.
-		maxAmount = maxAmountFemale[payrollType][workingTime] // ...we take the maximum amount based on your work time and payroll type. 
+		maxAmount = maxAmountFemale[payrollType][workingTime] // ...we take the maximum amount based on your work time and payroll type.
 	}
 
 	// Calculates the optimal line based on the minimum and maximum amount obtained.
@@ -184,19 +183,29 @@ func calculationEngine(payrollType string, firstJobDate time.Time, gender string
 }
 
 func main() {
-/*
-	Not necessary!
+	/*
+		Not necessary!
 
-	Start of the time to calculate the execution speed
+		Start of the time to calculate the execution speed
 	*/
 	startTime := time.Now()
 
-	payrollType := "A"
+	payrollType := "B"
 	firstJobDate := time.Now().AddDate(-1, -6, -15) // Date 1 year, 6 months and 15 days before the current date.
 	gender := "m"
 
 	// The values of the logic function are obtained.
 	minAmount, maxAmount, optimalLineRecommendation, err := calculationEngine(payrollType, firstJobDate, gender)
+	// If it gives error...
+	if err != nil {
+		panic(err) // ...program execution is stopped with this one.
+	}
+
+	var workingTime int
+
+	workingTime = calculateWorkingTime(firstJobDate)
+	workingTime, err = fixWorkingTime(workingTime, gender)
+
 	// If it gives error...
 	if err != nil {
 		panic(err) // ...program execution is stopped with this one.
@@ -211,10 +220,10 @@ func main() {
 	fmt.Printf("Maximum Amount: %d\n", maxAmount)
 	fmt.Printf("Optimal Line: %d\n\n", optimalLineRecommendation)
 
-    /*
-	Not necessary!
-	
-	End of time to calculate the execution speed and print it in milliseconds.
+	/*
+		Not necessary!
+
+		End of time to calculate the execution speed and print it in milliseconds.
 	*/
 	fmt.Println("Execution Time:", time.Since(startTime))
 }
